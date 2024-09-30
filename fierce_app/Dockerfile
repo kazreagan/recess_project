@@ -1,24 +1,25 @@
-# Use a Python base image
 FROM python:3.12-slim
 
-#Set environment variables
+# Set environment variabless
 ENV PYTHONDONTWRITEBYTECODE=1
-ENV PYTHONNUNBUFFERED=1
+ENV PYTHONUNBUFFERED=1
 
-# Set the working directory
+# Set the working directoryy
 WORKDIR /app
 
-# Copy requirements.txt
+# # Install Python dependencies
 COPY requirements.txt .
-
-# Install dependencies
 RUN pip install --no-cache-dir -r requirements.txt
 
-# Copy the rest of the application code
+
+# Install dependencies
+COPY requirements.txt .
+RUN pip install -r requirements.txt
+
+# Copy the application codee
 COPY . .
 
-# Expose the port your app runs on (default is usually 5000 for Flask)
 EXPOSE 5000
 
-# Start the application using Gunicornnnnn
-CMD ["gunicorn", "--bind", "0.0.0.0:5000", "app:app"]
+# Run migrations and start the app
+CMD ["gunicorn", "-b", "0.0.0.0:5000", "fierce_app:create_app()"]
