@@ -1,29 +1,29 @@
 # Specify the base image with the desired Node.js version
 FROM node:18-alpine
 
-
 # Set the working directory inside the container
 WORKDIR /app
 
-# Copy the package.jsonn and package-lock.json files
+# Copy the package.json and package-lock.json files
 COPY package*.json ./
-RUN npm install --force --verbose
 
-# Install the dependencies with verbose output for debugging
-RUN npm install --verbose
+# Install the dependencies
+RUN npm install --force --verbose
 
 # Copy the rest of the application files
 COPY . .
 
-# Build the app (only necessary for production or if you have a build step)
-RUN npm run build
+# List files for debugging
+RUN ls -la
+
+# Build the app
+RUN npm run build || { echo 'Build failed'; exit 1; }
 
 # Expose the port the app runs on
 EXPOSE 3000
 
-# Set the environment to production (optional)
+# Set the environment to production
 ENV NODE_ENV=production
 
 # Run the app
 CMD ["npm", "start"]
-
