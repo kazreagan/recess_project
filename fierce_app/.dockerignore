@@ -1,0 +1,22 @@
+# __pycache__
+# *.__pycache__
+# .git
+# .env
+
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+
+# Test and development files
+.env
+.git
+
+# Docker-related files
+Dockerfile
+docker-compose.yml
+
+# Logs and temporary files
+*.log
+*.swp
+*.tmp
+
