@@ -1,19 +1,17 @@
 FROM python:3.12-slim
 
-# Set environment variabless
+# Set environment variables
 ENV PYTHONDONTWRITEBYTECODE=1
 ENV PYTHONUNBUFFERED=1
 
-# Set the working directoryy
+# Set the working directory
 WORKDIR /app
 
-# # Install Python dependencies
+# Copy requirements.txt and install dependencies
 COPY requirements.txt .
 RUN pip install --no-cache-dir -r requirements.txt
 
-
-
-# Copy the application codee
+# Copy the application code
 COPY . .
 
 EXPOSE 5000
