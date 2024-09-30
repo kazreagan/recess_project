@@ -1,24 +1,29 @@
-# Use a Node.js base image
-FROM node:18
+# Specify the base image with the desired Node.js version
+FROM node:18-alpine
 
-# Set the working directory
-WORKDIR /my-app
 
-# Copy package.json and package-lock.json
-COPY my-app/package*.json ./
+# Set the working directory inside the container
+WORKDIR /app
 
-# Install dependencies
-RUN npm install
+# Copy the package.jsonn and package-lock.json files
+COPY package*.json ./
+RUN npm install --force --verbose
 
-# Copy the rest of the application code
-COPY my-app/ ./
+# Install the dependencies with verbose output for debugging
+RUN npm install --verbose
 
-# Build the app for production
+# Copy the rest of the application files
+COPY . .
+
+# Build the app (only necessary for production or if you have a build step)
 RUN npm run build
 
-
-# Expose port 3000
+# Expose the port the app runs on
 EXPOSE 3000
 
-# Start NGINX
+# Set the environment to production (optional)
+ENV NODE_ENV=production
+
+# Run the app
 CMD ["npm", "start"]
+
