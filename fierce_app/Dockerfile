@@ -22,4 +22,4 @@ COPY . .
 EXPOSE 5000
 
 # Run migrations and start the app
-CMD ["gunicorn", "-b", "0.0.0.0:5000", "fierce_app:create_app()"]
+CMD ["gunicorn", "-b", "0.0.0.0:5000", "app:create_app()"]
