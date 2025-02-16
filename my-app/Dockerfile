@@ -17,7 +17,9 @@ COPY . .
 RUN ls -la
 
 # Build the app
-RUN npm run build || { echo 'Build failed'; exit 1; }
+#RUN npm run build || { echo 'Build failed'; exit 1; }
+RUN npm run build || (echo 'Build failed'; cat /app/build.log; exit 1)
+
 
 # Expose the port the app runs on
 EXPOSE 3000

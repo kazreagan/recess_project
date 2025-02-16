@@ -164,4 +164,4 @@ const AdminDashboard = () => {
   );
 };
 
-export default AdminDashboard;AddProduct,AllOrders,AllProducts,Carousel,DeleteProduct,EditProduct;
+export default AdminDashboard;

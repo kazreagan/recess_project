@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from 'react';
-import { useHistory } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom'; // Use `useNavigate` for navigation
 import './Order.css';
 
 const Order = () => {
   const [orders, setOrders] = useState([]);
-  const history = useHistory();
+  const navigate = useNavigate(); // Use `useNavigate` instead of `useHistory`
 
   useEffect(() => {
     const fetchOrders = async () => {
@@ -12,7 +12,7 @@ const Order = () => {
         const token = localStorage.getItem('token');
         if (!token) {
           alert('Please log in to view your orders');
-          history.push('/login');
+          navigate('/login'); // Use `navigate` to redirect to login
           return;
         }
 
@@ -29,7 +29,7 @@ const Order = () => {
     };
 
     fetchOrders();
-  }, [history]);
+  }, [navigate]); // Include `navigate` in the dependency array
 
   return (
     <div className="orders">
