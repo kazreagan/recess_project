@@ -14,11 +14,11 @@
 /* Rest of your CSS styles */
 .App {
   text-align: center;
-  background-color:#D9C196;
+  background-color: #faf3e6;
 }
 
 .App-logo {
-  height: 30vmin;
+  height: 20vmin;
   pointer-events: none;
 }
 
@@ -29,8 +29,8 @@
 }
 
 .App-header {
-  background-color: rgb(246, 235, 222);
-  min-height: 20vh;
+  background-color: #fff7f7;
+  min-height: 15vh;
   display: flex;
   flex-direction: row;
   align-items: center;

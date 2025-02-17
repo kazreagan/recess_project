@@ -9,6 +9,88 @@
   width: 100%;
 }
 
+.product-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 0.5rem 0.5rem 0 0;
+}
+
+
+
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent overlay */
+  color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+  text-align: center;
+  border-radius: 0.5rem 0.5rem 0 0;
+}
+
+.product-name {
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+.product-price {
+  font-size: 1rem;
+  margin-bottom: 5px;
+}
+
+.product-stock {
+  font-size: 0.5rem;
+  margin-bottom: 15px;
+}
+
+.add-to-cart {
+  background-color: #f3d8b9f7;
+  border: none;
+  color: rgb(249, 247, 244);
+  padding: 10px;
+  text-align: center;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 16px;
+  cursor: pointer;
+  border-radius: 0.5rem;
+}
+
+.add-to-cart .cart-logo {
+  width: 20px;
+  height: 20px;
+  margin-right: 5px;
+}
+
+.product-details {
+  padding: 10px;
+  border: 1px solid rgb(214, 154, 91);
+  border-top: none;
+  border-radius: 0 0 0.5rem 0.5rem;
+  background-color: rgb(138, 85, 35);
+  color: white;
+}
+
+.product-info {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.product-info > div {
+  margin: 3px 0;
+}
+
 .product-card {
   border: 1px solid rgb(214, 154, 91);
   border-radius: 0.5rem;
@@ -19,14 +101,18 @@
   text-align: center;
   display: flex;
   flex-direction: column;
+  background-color: #fff;
 }
 
 .product-card img {
   width: 100%;
-  height: auto;
-  border-bottom: 1px solid rgb(214, 154, 91);
+  height: 100%;
+  object-fit: cover;
+  /* border-bottom: 1px solid rgb(214, 154, 91); */
   border-radius: 0.5rem 0.5rem 0 0; /* Rounded corners only at the top */
 }
+
+
 
 .product-details {
   padding: 10px;
@@ -93,6 +179,9 @@
 }
 
 .product-image-container {
+  position: relative;
+  width: 100%;
+  height: 300px;
   padding: 0; /* Reset padding to 0 */
 }
 

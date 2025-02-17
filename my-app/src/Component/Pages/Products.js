@@ -5,24 +5,45 @@ const Home = () => {
   const [products, setProducts] = useState([
     {
       id: 1, 
-      name: 'Product 1', 
-      price: 100, 
-      stock: 10, 
+      name: 'Stads', 
+      price: 10000, 
+      stock: 1, 
       image: '/images/pic1.jpg' 
     },
     { 
       id: 2, 
-      name: 'Product 2', 
-      price: 150, 
+      name: 'Silver Pieces', 
+      price: 15000, 
       stock: 5, 
       image: '/images/pic2.jpg' 
     },
     { 
       id: 3, 
-      name: 'Product 3', 
-      price: 200, 
+      name: 'Gold Stads', 
+      price: 10000, 
       stock: 8, 
       image: '/images/pic3.jpg' 
+    },
+    { 
+      id: 4, 
+      name: 'Gold Stads', 
+      price: 10000, 
+      stock: 8, 
+      image: '/images/pic3.jpg' 
+    },
+    { 
+      id: 5, 
+      name: 'Danglers', 
+      price: 10000, 
+      stock: 1, 
+      image: '/images/pic4.jpg' 
+    },
+    { 
+      id: 6, 
+      name: 'Bronches', 
+      price: 25000, 
+      stock: 1, 
+      image: '/images/pic5.jpg' 
     },
 
   ]); // Initialize as an empty array
@@ -54,10 +75,10 @@ const Home = () => {
 
       <div style={{ 
         display: 'flex', 
-        gridTemplateColumns: 'repeat(4, 1fr)', 
         flexWrap: 'wrap',
         gap: '1rem',
-        padding: '1px', }}>
+        padding: '1px', 
+        }}>
         {products.length > 0 ? (
           products.map((product) => (
             <div
@@ -74,33 +95,41 @@ const Home = () => {
                 flexDirection: 'column',
                 padding: '1rem',
                 alignItems: 'center',
+                borderRadius: '0.5rem',
+                backgroundColor: 'rgb(221, 202, 184)',
               }}
             >
               <img
                 src={product.image}
                 alt={product.name}
-                style={{ width: 'calc(100% - 20px)', height: 'auto', borderRadius: '0.5rem', marginBottom: '1rem' }}
+                style={{ 
+                  width: '100%', 
+                  height: '300px', 
+                  objectFit: 'cover',
+                  borderRadius: '0.5rem',
+                  marginBottom: '0.5rem' }}
               />
               <div
                 style={{
-                  padding: '1rem',
-                  border: '1px solid #ccc',
-                  borderTop: 'none',
-                  borderRadius: '0 0 0.5rem 0.5rem',
-                  backgroundColor: 'rgb(205, 152, 102)',
+                  width: '100%',
+                  padding: '0.5rem',
+                  // border: '1px solid #ccc',
+                  // borderTop: 'none',
+                  // borderRadius: '0 0 0.5rem 0.5rem',
+                  // backgroundColor: 'rgb(205, 152, 102)',
                   color: 'white',
                   display: 'flex',
                   flexDirection: 'column',
-                  justifyContent: 'space-between',
+                  justifyContent: 'flex-start',
                 }}
               >
-                <h2>{product.name}</h2>
-                <p>Price: {Math.round(product.price)}</p>
-                <p>Stock: {product.stock}</p>
+                <h2 style={{marginBottom: '0.25rem'}}>{product.name}</h2>
+                <p style={{marginBottom: '0.25rem'}}>Price: {Math.round(product.price)}</p>
+                <p style={{marginBottom: '0.25rem'}}>Stock: {product.stock}</p>
                 <button
                   style={{
                     width: '100%',
-                    padding: '0.75rem',
+                    padding: '0.5rem',
                     backgroundColor: '#ca8d5b',
                     color: 'white',
                     border: 'none',
