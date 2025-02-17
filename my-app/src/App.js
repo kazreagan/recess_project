@@ -21,36 +21,16 @@ import productImage3 from './images/pic3.jpg';
 import productImage4 from './images/pic4.jpg';
 
 function App() {
-  const [products, setProducts] = useState([
-    {
-      id: 1,
-      name: 'Product 1',
-      price: 100,
-      stock: 10,
-      image: productImage1, // Manually assign the imported image
-    },
-    {
-      id: 2,
-      name: 'Product 2',
-      price: 150,
-      stock: 5,
-      image: productImage2, // Manually assign the imported image
-    },
-    {
-      id: 3,
-      name: 'Product 3',
-      price: 200,
-      stock: 8,
-      image: productImage3, // Manually assign the imported image
-    },
-    {
-      id: 4,
-      name: 'Product 4',
-      price: 250,
-      stock: 2,
-      image: productImage4, // Manually assign the imported image
-    },
-  ]);
+  const [products, setProducts] = useState([]);
+  
+  useEffect(() => {
+    fetch("https://recess-project-1.onrender.com/api/v1/products")
+      .then(response => response.json())
+      .then(data => setProducts(data))
+      .catch(error => console.error("Error fetching products:", error));
+
+  }, []);
+  
 
   const isAdmin = localStorage.getItem('isAdmin') === 'true';
 
