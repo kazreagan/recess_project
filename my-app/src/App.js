@@ -15,10 +15,10 @@ import logo from './fierce__-removebg-preview.png';
 import AdminDashboard from './Component/Pages/adminDashboard';
 
 // Import product images manually
-import productImage1 from './images/pic1.jpg';
-import productImage2 from './images/pic2.jpg';
-import productImage3 from './images/pic3.jpg';
-import productImage4 from './images/pic4.jpg';
+// import productImage1 from './images/pic1.jpg';
+// import productImage2 from './images/pic2.jpg';
+// import productImage3 from './images/pic3.jpg';
+// import productImage4 from './images/pic4.jpg';
 
 function App() {
   const [products, setProducts] = useState([]);
