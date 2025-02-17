@@ -18,7 +18,7 @@ const AdminDashboard = () => {
   useEffect(() => {
     fetchProducts();
     fetchOrders();
-  }, []);
+  }, [fetchOrders, fetchProducts]);
 
   // Fetch all products from the API
   const fetchProducts = async () => {

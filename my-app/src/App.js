@@ -22,20 +22,31 @@ import AdminDashboard from './Component/Pages/adminDashboard';
 
 function App() {
   const [products, setProducts] = useState([]);
-  
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+
   useEffect(() => {
     fetch("https://recess-project-1.onrender.com/api/v1/products")
       .then(response => response.json())
-      .then(data => setProducts(data))
-      .catch(error => console.error("Error fetching products:", error));
-
+      .then(data => {
+        setProducts(data);
+        setLoading(false);
+      })
+      .catch(error => {
+        setError("Error fetching products.");
+        setLoading(false);
+      });
   }, []);
-  
 
   const isAdmin = localStorage.getItem('isAdmin') === 'true';
 
-  const handleSearch = () => {
-    // Implement search functionality if needed
+  const [searchTerm, setSearchTerm] = useState("");
+  const handleSearch = (e) => {
+    e.preventDefault();
+    const filteredProducts = products.filter(product =>
+      product.name.toLowerCase().includes(searchTerm.toLowerCase())
+    );
+    setProducts(filteredProducts);
   };
 
   return (
@@ -47,12 +58,22 @@ function App() {
               <img src={logo} className="App-logo" alt="logo" />
             </div>
             <div className="search-bar">
-              <input className="active" type="text" placeholder="Search..." />
+              <input
+                className="active"
+                type="text"
+                placeholder="Search..."
+                value={searchTerm}
+                onChange={(e) => setSearchTerm(e.target.value)}
+              />
               <button onClick={handleSearch}>Search</button>
             </div>
           </header>
 
           <Navbar />
+          
+          {loading && <div>Loading...</div>}
+          {error && <div>{error}</div>}
+          
           <Routes>
             <Route path="/products" element={<Products products={products} />} />
             <Route path="/cart" element={<Cart />} />
@@ -67,6 +88,7 @@ function App() {
             <Route path="/" element={<Navigate to={isAdmin ? "/admin-dashboard" : "/products"} />} />
             <Route path="*" element={<Navigate to={isAdmin ? "/admin-dashboard" : "/products"} />} />
           </Routes>
+          
           <Footer />
         </div>
       </CartProvider>
